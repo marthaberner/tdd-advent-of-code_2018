@@ -15,4 +15,12 @@ describe('Captcha', function () {
       assert.deepEqual(captcha.arrayifyMatchingDigits(), [1, 2]);
     })
   })
+
+  describe('#captchaSum', function () {
+    it('accumulates the arrayified matching digits', function() {
+      var input = 1122;
+      var captcha = new Captcha(input);
+      assert.equal(captcha.captchaSum(), 3);
+    })
+  })
 })

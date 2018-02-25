@@ -11,4 +11,11 @@ Captcha.prototype.arrayifyMatchingDigits = function () {
   })
 }
 
+Captcha.prototype.captchaSum = function () {
+  return this.arrayifyMatchingDigits().reduce(function (acc, num) {
+    acc += num;
+    return acc;
+  })
+}
+
 module.exports = Captcha;
