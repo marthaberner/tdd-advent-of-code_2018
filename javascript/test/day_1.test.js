@@ -1,11 +1,10 @@
 var assert = require('assert');
-var myFuncs = require('../lib/day_1');
+var Captcha = require('../lib/day_1');
 
-describe('Advent of Code Day 1', function () {
-  describe('#setup', function () {
-    it('setup', function () {
-
-      assert.equal(true, true);
-    })
+describe('Captcha', function () {
+  it('converts input to array of integers', function () {
+    var input = 1122;
+    var captcha = new Captcha(input);
+    assert.deepEqual(captcha.sequence, [1, 1, 2, 2]);
   })
 })
