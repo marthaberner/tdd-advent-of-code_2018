@@ -1,17 +1,20 @@
-var input = require('../data/day_1_input');
-
 function Captcha(sequence){
-  this.sequence = sequence.toString().split('').map(Number)
+  this.sequence = sequence;
+}
+
+Captcha.prototype.arrayifySequence = function () {
+  return this.sequence ? this.sequence.toString().split('').map(Number) : [];
 }
 
 Captcha.prototype.arrayifyMatchingDigits = function () {
-  var sequence = this.sequence;
+  var sequence = this.arrayifySequence();
   return sequence.filter(function(n, i) {
-    return n === sequence[i+1];
+    return i === sequence.length-1 ? n === sequence[0] : n === sequence[i+1];
   })
 }
 
 Captcha.prototype.captchaSum = function () {
+  if(this.arrayifyMatchingDigits().length === 0){ return 0 }
   return this.arrayifyMatchingDigits().reduce(function (acc, num) {
     acc += num;
     return acc;
