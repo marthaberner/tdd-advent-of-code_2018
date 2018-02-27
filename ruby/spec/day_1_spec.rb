@@ -15,4 +15,18 @@ describe Captcha do
       expect(captcha.arrayify_sequence).to eq []
     end
   end
+
+  describe '#arrayify_matching_digits' do
+    it 'creates an array of sequence digits that matched the next digit' do
+      input = 1122
+      captcha = Captcha.new(input)
+      expect(captcha.arrayify_matching_digits).to eq [1, 2]
+    end
+
+    it 'compares last digit in sequence to first' do
+      input = 1111
+      captcha = Captcha.new(input)
+      expect(captcha.arrayify_matching_digits).to eq [1, 1, 1, 1]
+    end
+  end
 end
