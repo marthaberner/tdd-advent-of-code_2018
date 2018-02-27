@@ -15,4 +15,10 @@ class Captcha
       i == self.arrayify_sequence.length - 1 ? n == self.arrayify_sequence[0] : n == self.arrayify_sequence[i+1]
     end
   end
+
+  def captcha_sum
+    return 0 if self.arrayify_matching_digits.empty?
+    self.arrayify_matching_digits.reduce { |acc, n| acc += n }
+  end
 end
+

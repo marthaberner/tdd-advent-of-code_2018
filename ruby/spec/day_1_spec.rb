@@ -29,4 +29,18 @@ describe Captcha do
       expect(captcha.arrayify_matching_digits).to eq [1, 1, 1, 1]
     end
   end
+
+  describe '#captcha_sum' do
+    it 'sums the arrayified matching digits' do
+      input = 1122
+      captcha = Captcha.new(input)
+      expect(captcha.captcha_sum).to eq 3
+    end
+
+    it 'returns zero when no numbers match' do
+      input = 1234
+      captcha = Captcha.new(input)
+      expect(captcha.captcha_sum).to eq 0
+    end
+  end
 end
