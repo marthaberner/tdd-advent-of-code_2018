@@ -2,17 +2,17 @@ require 'spec_helper'
 require 'day_1'
 
 describe Captcha do
-  describe '#arrayify_sequence' do
+  describe '#arrayified_sequence' do
     it 'converts input sequence to array of integers' do
       input = 1122
       captcha = Captcha.new(input)
-      expect(captcha.arrayify_sequence).to eq [1, 1, 2, 2]
+      expect(captcha.arrayified_sequence).to eq [1, 1, 2, 2]
     end
 
     it 'returns an empty array if handed nil' do
       input = nil
       captcha = Captcha.new(input)
-      expect(captcha.arrayify_sequence).to eq []
+      expect(captcha.arrayified_sequence).to eq []
     end
   end
 
@@ -27,6 +27,13 @@ describe Captcha do
       input = 1111
       captcha = Captcha.new(input)
       expect(captcha.arrayify_matching_digits).to eq [1, 1, 1, 1]
+    end
+
+    it 'can match digits halfway around' do
+      input = 1212
+      do_half_way_around = true
+      captcha = Captcha.new(input, do_half_way_around)
+      expect(captcha.arrayify_matching_digits).to eq [1,2,1,2]
     end
   end
 
